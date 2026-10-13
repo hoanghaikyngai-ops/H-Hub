@@ -67,7 +67,7 @@ CoreStroke.Parent = TowerCore
 CoreStroke.Color = Color3.fromRGB(0, 255, 200)
 CoreStroke.Thickness = 1.5
 
--- Tạo các cánh tháp/tấm năng lượng bao quanh (Modular Panels) tạo hình tòa nhà kiến trúc tương lai
+-- Tạo các cánh tháp/tấm năng lượng bao quanh (Modular Panels)
 local towerPanels = {}
 local panelConfigs = {
     {offsetX = -65, offsetY = -50, sizeX = 30, sizeY = 80},
@@ -83,7 +83,6 @@ for i, cfg in ipairs(panelConfigs) do
     panel.Name = "Panel_" .. i
     panel.Size = UDim2.new(0, cfg.sizeX, 0, cfg.sizeY)
     panel.AnchorPoint = Vector2.new(0.5, 0.5)
-    -- Vị trí ban đầu ở xa (dùng cho hiệu ứng tháo ra/lắp vào)
     panel.Position = UDim2.new(0.5, cfg.offsetX * 3, 0.45, cfg.offsetY * 3)
     panel.BackgroundColor3 = Color3.fromRGB(0, 255, 128) -- Xanh lá neon
     panel.BackgroundTransparency = 0.5
@@ -108,25 +107,24 @@ for i, cfg in ipairs(panelConfigs) do
     })
 end
 
--- [ VÒNG TRÒN DOWNLOAD (ĐÃ THU MỎNG, NỀN TRONG SUỐT, CÓ VẠCH NHẬN BIẾT XOAY) ]
+-- [ VÒNG TRÒN DOWNLOAD (SIÊU MỎNG, NỀN TRONG SUỐT, CÓ VẠCH XOAY) ]
 local DownloadCircleBg = Instance.new("Frame")
 DownloadCircleBg.Size = UDim2.new(0, 110, 0, 110)
 DownloadCircleBg.AnchorPoint = Vector2.new(0.5, 0.5)
 DownloadCircleBg.Position = UDim2.new(0.5, 0, 0.45, 0)
-DownloadCircleBg.BackgroundTransparency = 1 -- Hoàn toàn trong suốt ở bên trong
+DownloadCircleBg.BackgroundTransparency = 1 -- Trong suốt bên trong
 DownloadCircleBg.Parent = MainContainer
 
--- Viền vòng tròn siêu mỏng (Mãnh và sắc nét)
 local CircleStroke = Instance.new("UIStroke")
 CircleStroke.Parent = DownloadCircleBg
 CircleStroke.Color = Color3.fromRGB(0, 255, 128) -- Xanh lá neon
-CircleStroke.Thickness = 1.5 -- Làm mỏng tối đa
+CircleStroke.Thickness = 1.5 -- Siêu mỏng
 
 local CircleCorner = Instance.new("UICorner")
 CircleCorner.CornerRadius = UDim.new(1, 0)
 CircleCorner.Parent = DownloadCircleBg
 
--- Thêm các vạch góc/đốm nhận diện xoay bên trong vòng tròn để thấy rõ chuyển động
+-- Các vạch góc nhận diện xoay
 for i = 0, 3 do
     local marker = Instance.new("Frame")
     marker.Size = UDim2.new(0, 6, 0, 12)
@@ -161,7 +159,7 @@ Sound.Volume = 2
 Sound.Parent = CoreGui
 Sound:Play()
 
--- [ GIAI ĐOẠN 2: CHẠY SUỐT 1 PHÚT 2 GIÂY (62 GIÂY) - LẮP RÁP & THÁO RA LIÊN TỤC ]
+-- [ GIAI ĐOẠN HOẠT ĐỘNG XUYÊN SUỐT 1 PHÚT 2 GIÂY ]
 local startTime = tick()
 local duration = 62.0 
 local connection
@@ -169,31 +167,27 @@ local connection
 connection = RunService.RenderStepped:Connect(function()
     local elapsed = tick() - startTime
     
-    -- 1. Vòng tròn download siêu mỏng xoay liên tục (nhận biết hướng xoay rõ rệt nhờ các vạch)
+    -- 1. Vòng tròn download xoay liên tục
     if DownloadCircleBg then
         DownloadCircleBg.Rotation = elapsed * 150
     end
     
-end
-    -- 2. Hiệu ứng lắp ráp & tháo ra lặp đi lặp lại nhịp nhàng theo chu kỳ (mỗi chu kỳ 4 giây)
+    -- 2. Hiệu ứng lắp ráp & tháo ra lặp đi lặp lại liên tục (chu kỳ 4 giây)
     local cycleTime = elapsed % 4.0
-    local isAssemblyPhase = (cycleTime < 2.5) -- 2.5 giây đầu gộp lại thành tòa nhà, 1.5 giây sau bung/tháo ra
+    local isAssemblyPhase = (cycleTime < 2.5)
     
     for _, item in ipairs(towerPanels) do
         local targetPosX, targetPosY, targetTrans
         if isAssemblyPhase then
-            -- Gộp lại thành tòa nhà
             targetPosX = item.DefaultX
             targetPosY = item.DefaultY
             targetTrans = 0.3
         else
-            -- Tháo rời ra xa
             targetPosX = item.ScatterX
             targetPosY = item.ScatterY
             targetTrans = 0.8
         end
         
-        -- Dịch chuyển mượt mà từng mảnh
         item.Instance.Position = item.Instance.Position:Lerp(UDim2.new(0.5, targetPosX, 0.45, targetPosY), 0.1)
         item.Instance.BackgroundTransparency = item.Instance.BackgroundTransparency + (targetTrans - item.Instance.BackgroundTransparency) * 0.1
     end
@@ -204,7 +198,7 @@ end
     local offsetY = math.cos(elapsed * 35) * (shakeIntensity / 2)
     MainContainer.Position = UDim2.new(0.5, offsetX, 0.5, offsetY)
     
-    -- 4. Cập nhật dòng trạng thái thay đổi theo thời gian
+    -- 4. Cập nhật trạng thái
     if elapsed > 3 and elapsed < 18 then
         StatusLabel.Text = "ASSEMBLING GREEN-BLUE MATRIX..."
     elseif elapsed >= 18 and elapsed < 35 then
@@ -215,11 +209,10 @@ end
         StatusLabel.Text = "INITIALIZATION COMPLETE!"
     end
     
-    -- Kiểm tra khi hết 62 giây hoặc nhạc kết thúc
+    -- 5. Kiểm tra kết thúc 62 giây hoặc hết nhạc
     if elapsed >= duration or (Sound.TimeLength > 0 and Sound.Position >= Sound.TimeLength - 0.25) then
         if connection then connection:Disconnect() end
         
-        -- [ GIAI ĐOẠN 3: KẾT THÚC - DỌN DẸP VÀ CHUYỂN QUA SCRIPT CHÍNH ]
         StatusLabel.Text = "LAUNCHING SCRIPT..."
         
         local fadeOutTween = TweenService:Create(MainContainer, TweenInfo.new(0.8, Enum.EasingStyle.Back, Enum.EasingDirection.In), {

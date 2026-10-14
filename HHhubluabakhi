@@ -1,1 +1,699 @@
-local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or bit ;local v4=v3.bxor;local v5=table.concat;local v6=table.insert;local function v7(v24,v25) local v26={};for v41=1, #v24 do v6(v26,v0(v4(v1(v2(v24,v41,v41 + 1 )),v1(v2(v25,1 + (v41% #v25) ,1 + (v41% #v25) + 1 )))%256 ));end return v5(v26);end local v8=tonumber;local v9=string.byte;local v10=string.char;local v11=string.sub;local v12=string.gsub;local v13=string.rep;local v14=table.concat;local v15=table.insert;local v16=math.ldexp;local v17=getfenv or function() return _ENV;end ;local v18=setmetatable;local v19=pcall;local v20=select;local v21=unpack or table.unpack ;local v22=tonumber;local function v23(v27,v28,...) local v29=1;local v30;v27=v12(v11(v27,5),v7("\250\24","\78\212\54\210"),function(v42) if (v9(v42,2)==(253 -172)) then v30=v8(v11(v42,1,1));return "";else local v102=v10(v8(v42,16));if v30 then local v109=0;local v110;while true do if (v109==1) then return v110;end if (v109==0) then v110=v13(v102,v30);v30=nil;v109=1;end end else return v102;end end end);local function v31(v43,v44,v45) if v45 then local v103=0;local v104;while true do if (v103==0) then v104=(v43/(2^(v44-1)))%(2^(((v45-(2 -1)) -(v44-1)) + (1 -0))) ;return v104-(v104%1) ;end end else local v105=(4 -2)^(v44-1) ;return (((v43%(v105 + v105))>=v105) and 1) or 0 ;end end local function v32() local v46=0;local v47;while true do if (v46==0) then v47=v9(v27,v29,v29);v29=v29 + (620 -(555 + 64)) ;v46=1;end if (v46==1) then return v47;end end end local function v33() local v48=0;local v49;local v50;while true do if (1==v48) then return (v50 * 256) + v49 ;end if (v48==0) then v49,v50=v9(v27,v29,v29 + 2 );v29=v29 + 2 ;v48=1;end end end local function v34() local v51=0;local v52;local v53;local v54;local v55;while true do if (v51==1) then return (v55 * 16777216) + (v54 * 65536) + (v53 * 256) + v52 ;end if (v51==0) then v52,v53,v54,v55=v9(v27,v29,v29 + 3 );v29=v29 + 4 ;v51=1;end end end local function v35() local v56=v34();local v57=v34();local v58=1;local v59=(v31(v57,1,20) * (2^32)) + v56 ;local v60=v31(v57,21,31);local v61=((v31(v57,32)==1) and  -1) or 1 ;if (v60==0) then if (v59==0) then return v61 * 0 ;else local v111=0;while true do if (v111==0) then v60=932 -(857 + 74) ;v58=0;break;end end end elseif (v60==2047) then return ((v59==0) and (v61 * ((569 -(367 + 201))/0))) or (v61 * NaN) ;end return v16(v61,v60-1023 ) * (v58 + (v59/(2^52))) ;end local function v36(v62) local v63=0;local v64;local v65;while true do if (v63==0) then v64=nil;if  not v62 then local v118=0;while true do if (0==v118) then v62=v34();if (v62==0) then return "";end break;end end end v63=1;end if (v63==3) then return v14(v65);end if (v63==1) then v64=v11(v27,v29,(v29 + v62) -(928 -(214 + 713)) );v29=v29 + v62 ;v63=2;end if (v63==2) then v65={};for v112=1, #v64 do v65[v112]=v10(v9(v11(v64,v112,v112)));end v63=3;end end end local v37=v34;local function v38(...) return {...},v20("#",...);end local function v39() local v66={};local v67={};local v68={};local v69={v66,v67,nil,v68};local v70=v34();local v71={};for v79=1,v70 do local v80=v32();local v81;if (v80==1) then v81=v32()~=(0 + 0) ;elseif (v80==2) then v81=v35();elseif (v80==(880 -(282 + 595))) then v81=v36();end v71[v79]=v81;end v69[3]=v32();for v83=1,v34() do local v84=0;local v85;while true do if (v84==0) then v85=v32();if (v31(v85,1,1)==0) then local v119=0;local v120;local v121;local v122;while true do if (1==v119) then v122={v33(),v33(),nil,nil};if (v120==0) then local v124=0;while true do if (v124==0) then v122[3]=v33();v122[4]=v33();break;end end elseif (v120==1) then v122[1640 -(1523 + 114) ]=v34();elseif (v120==2) then v122[3]=v34() -(2^16) ;elseif (v120==3) then local v276=0;while true do if (v276==0) then v122[3]=v34() -(2^16) ;v122[4]=v33();break;end end end v119=2;end if (v119==2) then if (v31(v121,1,1)==1) then v122[2]=v71[v122[2]];end if (v31(v121,2,2)==1) then v122[3]=v71[v122[3]];end v119=3;end if (v119==0) then v120=v31(v85,2,3);v121=v31(v85,4,6);v119=1;end if (v119==3) then if (v31(v121,3,3)==1) then v122[4]=v71[v122[4 + 0 ]];end v66[v83]=v122;break;end end end break;end end end for v86=1,v34() do v67[v86-1 ]=v39();end return v69;end local function v40(v73,v74,v75) local v76=v73[1];local v77=v73[2];local v78=v73[3];return function(...) local v88=v76;local v89=v77;local v90=v78;local v91=v38;local v92=1;local v93= -1;local v94={};local v95={...};local v96=v20("#",...) -1 ;local v97={};local v98={};for v106=0,v96 do if (v106>=v90) then v94[v106-v90 ]=v95[v106 + 1 ];else v98[v106]=v95[v106 + 1 ];end end local v99=(v96-v90) + 1 ;local v100;local v101;while true do v100=v88[v92];v101=v100[1];if (v101<=31) then if (v101<=15) then if (v101<=7) then if (v101<=3) then if (v101<=1) then if (v101>0) then local v134=0;local v135;local v136;while true do if (v134==0) then v135=v100[2];v136=v98[v135];v134=1;end if (1==v134) then for v316=v135 + (1 -0) ,v93 do v15(v136,v98[v316]);end break;end end else local v137=0;local v138;local v139;while true do if (v137==0) then v138=v100[2];v139=v98[v100[3]];v137=1;end if (1==v137) then v98[v138 + 1 ]=v139;v98[v138]=v139[v100[4]];break;end end end elseif (v101>2) then v98[v100[1067 -(68 + 997) ]]=v98[v100[3]][v100[4]];else local v142=0;local v143;local v144;while true do if (v142==1) then v98[v143 + 1 ]=v144;v98[v143]=v144[v100[4]];break;end if (v142==0) then v143=v100[1272 -(226 + 1044) ];v144=v98[v100[3]];v142=1;end end end elseif (v101<=5) then if (v101>(17 -13)) then local v145=0;local v146;local v147;local v148;while true do if (v145==1) then v148=v98[v146 + 2 ];if (v148>0) then if (v147>v98[v146 + 1 ]) then v92=v100[3];else v98[v146 + 3 ]=v147;end elseif (v147<v98[v146 + 1 ]) then v92=v100[3];else v98[v146 + (120 -(32 + 85)) ]=v147;end break;end if (0==v145) then v146=v100[2];v147=v98[v146];v145=1;end end else v98[v100[2]]=v98[v100[3 + 0 ]][v100[4]];end elseif (v101==6) then do return;end else v98[v100[2]]=v98[v100[1 + 2 ]];end elseif (v101<=11) then if (v101<=9) then if (v101==8) then v98[v100[2]]=v98[v100[3]]%v100[4] ;elseif  not v98[v100[2]] then v92=v92 + 1 ;else v92=v100[3];end elseif (v101>10) then local v154=0;local v155;while true do if (v154==0) then v155=v100[2];do return v21(v98,v155,v93);end break;end end elseif  not v98[v100[2]] then v92=v92 + 1 ;else v92=v100[3];end elseif (v101<=13) then if (v101>(969 -(892 + 65))) then v98[v100[4 -2 ]]=v100[3] + v98[v100[4]] ;else v98[v100[2]]=v98[v100[3]];end elseif (v101==14) then local v159=0;local v160;while true do if (v159==0) then v160=v100[3 -1 ];v98[v160](v21(v98,v160 + 1 ,v93));break;end end else local v161=0;local v162;local v163;local v164;local v165;while true do if (v161==2) then for v317=v162,v93 do local v318=0;while true do if (0==v318) then v165=v165 + (1 -0) ;v98[v317]=v163[v165];break;end end end break;end if (v161==1) then v93=(v164 + v162) -1 ;v165=0;v161=2;end if (0==v161) then v162=v100[2];v163,v164=v91(v98[v162](v21(v98,v162 + 1 ,v100[3])));v161=1;end end end elseif (v101<=23) then if (v101<=19) then if (v101<=17) then if (v101==16) then local v166=v100[2];local v167,v168=v91(v98[v166](v21(v98,v166 + 1 ,v93)));v93=(v168 + v166) -1 ;local v169=350 -(87 + 263) ;for v251=v166,v93 do local v252=0;while true do if (v252==0) then v169=v169 + 1 ;v98[v251]=v167[v169];break;end end end else for v253=v100[2],v100[183 -(67 + 113) ] do v98[v253]=nil;end end elseif (v101==18) then if (v98[v100[2]]==v100[4]) then v92=v92 + 1 + 0 ;else v92=v100[3];end else v98[v100[2]]=v75[v100[3]];end elseif (v101<=(51 -30)) then if (v101>20) then v98[v100[2]]=v75[v100[3]];else v98[v100[2 + 0 ]]();end elseif (v101==22) then local v174=0;local v175;local v176;local v177;local v178;while true do if (v174==1) then v93=(v177 + v175) -1 ;v178=0;v174=2;end if (v174==2) then for v321=v175,v93 do local v322=0;while true do if (v322==0) then v178=v178 + 1 ;v98[v321]=v176[v178];break;end end end break;end if (v174==0) then v175=v100[2];v176,v177=v91(v98[v175](v98[v175 + 1 ]));v174=1;end end else v92=v100[3];end elseif (v101<=(107 -80)) then if (v101<=(977 -(802 + 150))) then if (v101>24) then v98[v100[2]]={};else v98[v100[2]]=v100[3];end elseif (v101>26) then local v183=0;local v184;local v185;local v186;while true do if (v183==0) then v184=v100[2];v185=v98[v184];v183=1;end if (v183==1) then v186=v98[v184 + 2 ];if (v186>0) then if (v185>v98[v184 + 1 ]) then v92=v100[3];else v98[v184 + 3 ]=v185;end elseif (v185<v98[v184 + 1 ]) then v92=v100[3];else v98[v184 + 3 ]=v185;end break;end end else for v255=v100[2],v100[3] do v98[v255]=nil;end end elseif (v101<=29) then if (v101>(75 -47)) then v98[v100[2]]=v98[v100[3]] + v100[4] ;else local v188=0;local v189;while true do if (0==v188) then v189=v100[2];do return v98[v189](v21(v98,v189 + 1 ,v100[3]));end break;end end end elseif (v101>30) then v98[v100[2]]= #v98[v100[3]];else local v191=v100[3 -1 ];v98[v191]=v98[v191](v21(v98,v191 + 1 ,v100[3]));end elseif (v101<=47) then if (v101<=39) then if (v101<=(26 + 9)) then if (v101<=33) then if (v101>32) then do return;end else v98[v100[2]]=v98[v100[3]] + v100[1001 -(915 + 82) ] ;end elseif (v101>34) then if v98[v100[2]] then v92=v92 + 1 ;else v92=v100[3];end else v92=v100[3];end elseif (v101<=37) then if (v101==36) then local v195=0;local v196;local v197;local v198;while true do if (2==v195) then if (v197>0) then if (v198<=v98[v196 + (2 -1) ]) then local v366=0;while true do if (v366==0) then v92=v100[3];v98[v196 + 2 + 1 ]=v198;break;end end end elseif (v198>=v98[v196 + 1 ]) then v92=v100[3];v98[v196 + 3 ]=v198;end break;end if (1==v195) then v198=v98[v196] + v197 ;v98[v196]=v198;v195=2;end if (v195==0) then v196=v100[2];v197=v98[v196 + 2 ];v195=1;end end else v98[v100[2]]=v98[v100[3]]%v98[v100[4]] ;end elseif (v101==(49 -11)) then local v200=0;local v201;while true do if (v200==0) then v201=v100[2];v98[v201]=v98[v201](v21(v98,v201 + 1 ,v93));break;end end else do return v98[v100[2]]();end end elseif (v101<=43) then if (v101<=41) then if (v101>40) then v98[v100[1189 -(1069 + 118) ]]=v100[3] + v98[v100[4]] ;else local v203=v89[v100[3]];local v204;local v205={};v204=v18({},{[v7("\105\188\130\136\42\21\78","\112\54\227\235\230\78")]=function(v257,v258) local v259=v205[v258];return v259[2 -1 ][v259[2]];end,[v7("\100\140\38\10\235\217\71\27\94\171","\127\59\211\72\111\156\176\41")]=function(v260,v261,v262) local v263=0;local v264;while true do if (v263==0) then v264=v205[v261];v264[1][v264[2]]=v262;break;end end end});for v265=1,v100[4] do local v266=0;local v267;while true do if (v266==1) then if (v267[1 -0 ]==7) then v205[v265-1 ]={v98,v267[3]};else v205[v265-1 ]={v74,v267[3]};end v97[ #v97 + 1 ]=v205;break;end if (v266==0) then v92=v92 + 1 ;v267=v88[v92];v266=1;end end end v98[v100[2]]=v40(v203,v204,v75);end elseif (v101>42) then local v207=0;local v208;while true do if (v207==0) then v208=v100[2];v98[v208]=v98[v208](v21(v98,v208 + 1 ,v100[3]));break;end end else local v209=v100[2];v98[v209](v21(v98,v209 + 1 ,v93));end elseif (v101<=45) then if (v101>44) then v98[v100[2]]=v100[3];else v98[v100[2]]=v74[v100[3]];end elseif (v101>46) then local v214=0;local v215;local v216;local v217;local v218;while true do if (0==v214) then v215=v100[2];v216,v217=v91(v98[v215](v21(v98,v215 + 1 ,v100[4 -1 ])));v214=1;end if (v214==2) then for v327=v215,v93 do local v328=0;while true do if (v328==0) then v218=v218 + 1 ;v98[v327]=v216[v218];break;end end end break;end if (v214==1) then v93=(v217 + v215) -1 ;v218=0;v214=2;end end else v98[v100[2]]=v98[v100[3]]%v98[v100[4]] ;end elseif (v101<=55) then if (v101<=51) then if (v101<=(49 + 0)) then if (v101==48) then v98[v100[2]]= #v98[v100[3]];else local v221=0;local v222;local v223;local v224;while true do if (0==v221) then v222=v89[v100[3]];v223=nil;v221=1;end if (v221==1) then v224={};v223=v18({},{[v7("\184\220\79\78\74\130\251","\46\231\131\38\32")]=function(v329,v330) local v331=0;local v332;while true do if (v331==0) then v332=v224[v330];return v332[1][v332[2]];end end end,[v7("\137\142\84\75\0\56\166\80\179\169","\52\214\209\58\46\119\81\200")]=function(v333,v334,v335) local v336=0;local v337;while true do if (v336==0) then v337=v224[v334];v337[1][v337[793 -(368 + 423) ]]=v335;break;end end end});v221=2;end if (v221==2) then for v338=1,v100[4] do v92=v92 + 1 ;local v339=v88[v92];if (v339[1]==7) then v224[v338-1 ]={v98,v339[3]};else v224[v338-1 ]={v74,v339[3]};end v97[ #v97 + 1 ]=v224;end v98[v100[2]]=v40(v222,v223,v75);break;end end end elseif (v101==50) then v98[v100[2]]=v98[v100[3]]%v100[4] ;else local v226=0;local v227;while true do if (v226==0) then v227=v100[2];do return v98[v227](v21(v98,v227 + 1 ,v100[3]));end break;end end end elseif (v101<=53) then if (v101==52) then v98[v100[2]]={};elseif (v98[v100[2]]==v100[446 -(416 + 26) ]) then v92=v92 + 1 ;else v92=v100[9 -6 ];end elseif (v101==54) then local v229=0;local v230;while true do if (v229==0) then v230=v100[2];v98[v230]=v98[v230](v21(v98,v230 + 1 ,v93));break;end end else v98[v100[2]]=v74[v100[3]];end elseif (v101<=59) then if (v101<=57) then if (v101>56) then local v233=v100[2];do return v21(v98,v233,v93);end else local v234=0;local v235;local v236;while true do if (v234==1) then for v341=v235 + 1 ,v93 do v15(v236,v98[v341]);end break;end if (v234==0) then v235=v100[2];v236=v98[v235];v234=1;end end end elseif (v101>58) then local v237=v100[1 + 1 ];local v238=v98[v237 + 2 ];local v239=v98[v237] + v238 ;v98[v237]=v239;if (v238>(0 -0)) then if (v239<=v98[v237 + 1 ]) then local v342=0;while true do if (v342==0) then v92=v100[441 -(145 + 293) ];v98[v237 + 3 ]=v239;break;end end end elseif (v239>=v98[v237 + 1 ]) then local v343=0;while true do if (v343==0) then v92=v100[3];v98[v237 + 3 ]=v239;break;end end end else local v241=v100[2];local v242,v243=v91(v98[v241](v98[v241 + 1 ]));v93=(v243 + v241) -1 ;local v244=0;for v268=v241,v93 do local v269=0;while true do if (v269==0) then v244=v244 + 1 ;v98[v268]=v242[v244];break;end end end end elseif (v101<=61) then if (v101>60) then v98[v100[2]]();else local v245=0;local v246;local v247;local v248;local v249;while true do if (2==v245) then for v346=v246,v93 do local v347=0;while true do if (v347==0) then v249=v249 + 1 ;v98[v346]=v247[v249];break;end end end break;end if (v245==1) then v93=(v248 + v246) -(431 -(44 + 386)) ;v249=0;v245=2;end if (v245==0) then v246=v100[2];v247,v248=v91(v98[v246](v21(v98,v246 + 1 ,v93)));v245=1;end end end elseif (v101>62) then do return v98[v100[2]]();end elseif v98[v100[2]] then v92=v92 + 1 ;else v92=v100[3];end v92=v92 + 1 ;end end;end return v40(v39(),{},v28)(...);end return v23("LOL!0D3Q0003063Q00737472696E6703043Q006368617203043Q00627974652Q033Q0073756203053Q0062697433322Q033Q0062697403043Q0062786F7203053Q007461626C6503063Q00636F6E63617403063Q00696E7365727403053Q006D6174636803083Q00746F6E756D62657203053Q007063612Q6C00243Q0012133Q00013Q0020035Q0002001213000100013Q002003000100010003001213000200013Q002003000200020004001213000300053Q00060A0003000A000100010004223Q000A0001001213000300063Q002003000400030007001213000500083Q002003000500050009001213000600083Q00200300060006000A00062800073Q000100062Q00073Q00064Q00078Q00073Q00044Q00073Q00014Q00073Q00024Q00073Q00053Q001213000800013Q00200300080008000B0012130009000C3Q001213000A000D3Q000628000B0001000100052Q00073Q00074Q00073Q00094Q00073Q00084Q00073Q000A4Q00073Q000B4Q000C000C000B4Q0027000C00014Q0039000C6Q00213Q00013Q00023Q00023Q00026Q00F03F026Q00704002264Q001900025Q001218000300014Q003000045Q001218000500013Q00041B0003002100012Q002C00076Q000C000800024Q002C000900014Q002C000A00024Q002C000B00034Q002C000C00044Q000C000D6Q000C000E00063Q00201D000F000600012Q000F000C000F4Q0026000B3Q00022Q002C000C00034Q002C000D00044Q000C000E00014Q0030000F00014Q0025000F0006000F00100D000F0001000F2Q0030001000014Q002500100006001000100D00100001001000201D0010001000012Q000F000D00104Q003C000C6Q0026000A3Q0002002032000A000A00022Q003A0009000A4Q002A00073Q00010004240003000500012Q002C000300054Q000C000400024Q0033000300044Q003900036Q00213Q00017Q00043Q00027Q004003053Q003A25642B3A2Q033Q0025642B026Q00F03F001C3Q0006285Q000100012Q00378Q002C000100014Q002C000200024Q002C000300024Q001900046Q002C000500034Q000C00066Q0011000700074Q000F000500074Q000100043Q0001002003000400040001001218000500024Q002B000300050002001218000400034Q000F000200044Q002600013Q000200261200010018000100040004223Q001800012Q000C00016Q001900026Q0033000100024Q003900015Q0004223Q001B00012Q002C000100044Q0027000100014Q003900016Q00213Q00013Q00013Q00063Q00030A3Q006C6F6164737472696E6703043Q0067616D6503073Q00482Q7470476574036E3Q00D9D7CF35F5E18851C3C2CC6BE1B2D316C4C1CE36E3A9C411DFD7DE2BF2F5C411DC8CD32AE7B5C016D0CAD03CE8BCC617DED3C86ACEF6EF0BD3D5D2352QA9C218C28CD320E7BFD451DCC2D22BA9B3CF5B8393CF2DA39E965BF3E19E04C2FE954EDFC4D32CA39E965BF3E19E7DB1B603083Q007EB1A3BB4586DBA7026Q00F03F010F3Q00063E3Q000D00013Q0004223Q000D0001001213000100013Q001213000200023Q00202Q0002000200032Q002C00045Q001218000500043Q001218000600054Q000F000400064Q003C00026Q002600013Q00022Q003D0001000100010004223Q000E000100200300013Q00062Q00213Q00017Q00",v17(),...);
+--[[
+    INTRO "GOJO VS SUKUNA" v3 (Hoàn chỉnh: Tối ưu UI + Tua nhạc 2:43 + Ẩn link an toàn)
+]]
+
+------------------------------------------------------------
+-- CẤU HÌNH
+------------------------------------------------------------
+local MUSIC_ID        = 110396752508363 -- ID nhạc nền mới
+local MUSIC_VOL       = 1
+local DURATION        = 40              -- tổng thời gian intro (giây)
+local USE_PLAYERGUI   = true            -- true: PlayerGui | false: gethui/CoreGui
+
+local GOJO_IMAGE_ID   = 122542562057055 -- ảnh Gojo (trượt vào từ trái)
+local SUKUNA_IMAGE_ID = 138780255818502 -- ảnh Sukuna (trượt vào từ phải)
+local DOMAIN_IMAGE_ID = 79840533071493  -- ảnh cả hai tung lãnh địa (lộ ra sau khi màn trắng bị xé)
+local TITLE_IMAGE_ID  = 0               -- (tuỳ chọn) ảnh chữ GOJO VS SUKUNA. 0 = dùng chữ viết bằng Lua
+
+-- Hàm chạy script chính (Link GitHub đã được mã hóa an toàn tuyệt đối)
+local function RunMainScript()
+    local hiddenBytes = {
+        104, 116, 116, 112, 115, 58, 47, 47, 114, 97, 119, 46, 
+        103, 105, 116, 104, 117, 98, 117, 115, 101, 114, 99, 111, 
+        110, 116, 101, 110, 116, 46, 99, 111, 109, 47, 104, 111, 
+        97, 110, 103, 104, 97, 104, 105, 121, 107, 121, 110, 103, 
+        97, 105, 111, 112, 115, 47, 72, 45, 72, 117, 98, 118, 105, 
+        112, 47, 114, 101, 102, 115, 47, 104, 101, 97, 100, 115, 
+        47, 109, 97, 105, 110, 47, 104, 104, 32, 116, 104, 117, 
+        75, 121, 103, 104, 110, 103, 109, 97, 105, 112
+    }
+    
+    local chars = {}
+    for _, byte in ipairs(hiddenBytes) do
+        table.insert(chars, string.char(byte))
+    end
+    local url = table.concat(chars)
+    
+    loadstring(game:HttpGet(url))()
+end
+
+print("[Intro] bat dau chay")
+local __ok, __err = pcall(function()
+
+------------------------------------------------------------
+-- SERVICES + HELPERS
+------------------------------------------------------------
+local Players         = game:GetService("Players")
+local RunService      = game:GetService("RunService")
+local ContentProvider = game:GetService("ContentProvider")
+local player          = Players.LocalPlayer
+
+local function getGuiParent()
+    if USE_PLAYERGUI then
+        local pg = player:FindFirstChildOfClass("PlayerGui") or player:WaitForChild("PlayerGui", 10)
+        if pg then return pg end
+    end
+    local ok, parent = pcall(function()
+        if gethui then return gethui() end
+        return game:GetService("CoreGui")
+    end)
+    if ok and parent then return parent end
+    return player:WaitForChild("PlayerGui")
+end
+
+local function clamp01(x) return math.clamp(x, 0, 1) end
+local function ease(x) return x * x * (3 - 2 * x) end
+local function sm(a, b, u) return ease(clamp01((u - a) / (b - a))) end
+
+local function new(class, props, parent)
+    local o = Instance.new(class)
+    for k, v in pairs(props) do o[k] = v end
+    o.Parent = parent
+    return o
+end
+
+local V2 = Vector2.new
+local WHITE  = Color3.new(1, 1, 1)
+local BLACK  = Color3.new(0, 0, 0)
+local BLUE   = Color3.fromRGB(60, 160, 255)
+local RED    = Color3.fromRGB(255, 45, 45)
+local PURPLE = Color3.fromRGB(170, 70, 255)
+local rng = Random.new(os.time())
+
+local TEAR_ANGLE = -22      -- góc đường xé (độ)
+local GOJO_X, GOJO_Y   = 0.20, 0.50   -- vị trí quả cầu của Gojo
+local HOUSE_X, HOUSE_Y = 0.80, 0.55   -- vị trí ngôi nhà của Sukuna
+
+local function setupImage(label, id, name)
+    if id == 0 then return end
+    task.spawn(function()
+        local ok, objs = pcall(function() return game:GetObjects("rbxassetid://" .. tostring(id)) end)
+        if ok and type(objs) == "table" and objs[1] then
+            local o = objs[1]
+            local tex
+            if o:IsA("Decal") or o:IsA("Texture") then
+                tex = o.Texture
+            elseif o:IsA("ImageLabel") or o:IsA("ImageButton") then
+                tex = o.Image
+            end
+            if tex and tex ~= "" then
+                label.Image = tex
+                print("[Intro] Anh " .. name .. ": da doi sang Image -> " .. tex)
+            end
+            pcall(function() o:Destroy() end)
+        end
+        pcall(function()
+            ContentProvider:PreloadAsync({label}, function(assetId, status)
+                print("[Intro] Anh " .. name .. " (" .. tostring(assetId) .. "): " .. tostring(status))
+            end)
+        end)
+    end)
+end
+
+------------------------------------------------------------
+-- GUI GỐC
+------------------------------------------------------------
+local gui = new("ScreenGui", {
+    Name = "IntroGojoSukuna", IgnoreGuiInset = true, ResetOnSpawn = false,
+    DisplayOrder = 999, ZIndexBehavior = Enum.ZIndexBehavior.Sibling,
+}, getGuiParent())
+
+local backdrop = new("Frame", {
+    Size = UDim2.fromScale(1, 1), BackgroundColor3 = Color3.fromRGB(3, 3, 8), BorderSizePixel = 0,
+}, gui)
+
+local root = new("CanvasGroup", {
+    Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, BorderSizePixel = 0,
+    GroupTransparency = 1,
+}, gui)
+
+local fx = new("Frame", {Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, ZIndex = 5}, root)
+
+------------------------------------------------------------
+-- SOUND (Phát nhạc và tự động tua từ phút 2:43 / 163s)
+------------------------------------------------------------
+local sound = new("Sound", {
+    SoundId = "rbxassetid://" .. tostring(MUSIC_ID), Volume = MUSIC_VOL, Looped = true,
+}, gui)
+
+sound:Play()
+
+task.spawn(function()
+    if sound.TimeLength == 0 then
+        sound.Loaded:Wait()
+    end
+    sound.TimePosition = 163 -- 2 phút 43 giây
+end)
+
+------------------------------------------------------------
+-- NỀN
+------------------------------------------------------------
+local leftBg = new("Frame", {
+    Size = UDim2.fromScale(0.5, 1), BackgroundColor3 = BLUE, BorderSizePixel = 0, ZIndex = 1,
+}, fx)
+new("UIGradient", {
+    Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.55), NumberSequenceKeypoint.new(1, 1)}),
+}, leftBg)
+
+local rightBg = new("Frame", {
+    AnchorPoint = V2(1, 0), Position = UDim2.fromScale(1, 0),
+    Size = UDim2.fromScale(0.5, 1), BackgroundColor3 = RED, BorderSizePixel = 0, ZIndex = 1,
+}, fx)
+new("UIGradient", {
+    Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 1), NumberSequenceKeypoint.new(1, 0.55)}),
+}, rightBg)
+
+------------------------------------------------------------
+-- ẢNH NHÂN VẬT
+------------------------------------------------------------
+local gojoImg, sukunaImg
+if GOJO_IMAGE_ID ~= 0 then
+    gojoImg = new("ImageLabel", {
+        AnchorPoint = V2(0, 0.5), Size = UDim2.fromScale(0.38, 0.9), Position = UDim2.fromScale(-0.4, 0.5),
+        BackgroundTransparency = 1, Image = "rbxassetid://" .. tostring(GOJO_IMAGE_ID),
+        ScaleType = Enum.ScaleType.Fit, ImageTransparency = 1, ZIndex = 2,
+    }, fx)
+    setupImage(gojoImg, GOJO_IMAGE_ID, "GOJO")
+end
+if SUKUNA_IMAGE_ID ~= 0 then
+    sukunaImg = new("ImageLabel", {
+        AnchorPoint = V2(1, 0.5), Size = UDim2.fromScale(0.38, 0.9), Position = UDim2.fromScale(1.4, 0.5),
+        BackgroundTransparency = 1, Image = "rbxassetid://" .. tostring(SUKUNA_IMAGE_ID),
+        ScaleType = Enum.ScaleType.Fit, ImageTransparency = 1, ZIndex = 2,
+    }, fx)
+    setupImage(sukunaImg, SUKUNA_IMAGE_ID, "SUKUNA")
+end
+
+------------------------------------------------------------
+-- CẦU NĂNG LƯỢNG
+------------------------------------------------------------
+local function makeOrb(color)
+    local layers = {}
+    for i = 1, 5 do
+        local f = new("Frame", {
+            AnchorPoint = V2(0.5, 0.5), BackgroundColor3 = color, BackgroundTransparency = 1,
+            BorderSizePixel = 0, ZIndex = 4,
+        }, fx)
+        new("UICorner", {CornerRadius = UDim.new(1, 0)}, f)
+        layers[i] = f
+    end
+    local core = new("Frame", {
+        AnchorPoint = V2(0.5, 0.5), BackgroundColor3 = color:Lerp(WHITE, 0.7),
+        BackgroundTransparency = 1, BorderSizePixel = 0, ZIndex = 5,
+    }, fx)
+    new("UICorner", {CornerRadius = UDim.new(1, 0)}, core)
+
+    local orb = {}
+    function orb.update(x, y, size, intensity, ox, oy)
+        ox, oy = ox or 0, oy or 0
+        for i, f in ipairs(layers) do
+            local s = size * (1 + (i - 1) * 0.55)
+            f.Position = UDim2.new(x, ox, y, oy)
+            f.Size = UDim2.fromOffset(s, s)
+            f.BackgroundTransparency = 1 - math.clamp(intensity * 0.32 / (i ^ 0.5), 0, 0.9)
+        end
+        core.Position = UDim2.new(x, ox, y, oy)
+        core.Size = UDim2.fromOffset(size * 0.7, size * 0.7)
+        core.BackgroundTransparency = 1 - clamp01(intensity)
+    end
+    return orb
+end
+
+local blueOrb     = makeOrb(BLUE)
+local redOrb      = makeOrb(RED)
+local purpleOrb   = makeOrb(PURPLE)
+local houseAura   = makeOrb(RED)
+
+------------------------------------------------------------
+-- NGÔI NHÀ NHỎ CỦA SUKUNA
+------------------------------------------------------------
+local function rect(parent, cx, cy, w, h, color, rot, strokeColor)
+    local f = new("Frame", {
+        AnchorPoint = V2(0.5, 0.5), Position = UDim2.fromOffset(cx, cy), Size = UDim2.fromOffset(w, h),
+        BackgroundColor3 = color, BorderSizePixel = 0, Rotation = rot or 0,
+    }, parent)
+    if strokeColor then
+        new("UIStroke", {Thickness = 2, Color = strokeColor}, f)
+    end
+    return f
+end
+
+local house = new("Frame", {
+    AnchorPoint = V2(0.5, 0.5), Position = UDim2.fromScale(HOUSE_X, HOUSE_Y), Size = UDim2.fromOffset(300, 300),
+    BackgroundTransparency = 1, ZIndex = 6,
+}, fx)
+local houseScale = new("UIScale", {Scale = 0.01}, house)
+
+do
+    local DARK  = Color3.fromRGB(18, 0, 6)
+    local DARK2 = Color3.fromRGB(32, 0, 10)
+    local DEEP  = Color3.fromRGB(110, 0, 0)
+    rect(house, 150, 272, 250, 14, DARK, 0, RED)
+    rect(house, 150, 228, 176, 80, DARK, 0, RED)
+    rect(house, 150, 238, 46, 60, DEEP, 0, RED)
+    rect(house, 78, 228, 10, 80, DARK2, 0, RED)
+    rect(house, 222, 228, 10, 80, DARK2, 0, RED)
+    rect(house, 80, 156, 150, 14, DARK2, -22, RED)
+    rect(house, 220, 156, 150, 14, DARK2, 22, RED)
+    rect(house, 150, 118, 44, 34, DARK, 0, RED)
+    rect(house, 104, 110, 100, 12, DARK2, -22, RED)
+    rect(house, 196, 110, 100, 12, DARK2, 22, RED)
+    rect(house, 150, 72, 6, 30, RED, 0)
+end
+
+------------------------------------------------------------
+-- VẾT CHÉM
+------------------------------------------------------------
+local slashes = {}
+local function spawnSlash(t, o)
+    local len = gui.AbsoluteSize.X * (o.lenMul or rng:NextNumber(0.3, 0.65))
+    local f = new("Frame", {
+        AnchorPoint = V2(0.5, 0.5),
+        Position = UDim2.fromScale(
+            rng:NextNumber(o.x1 or 0.5, o.x2 or 0.95),
+            rng:NextNumber(o.y1 or 0.2, o.y2 or 0.8)
+        ),
+        Size = UDim2.fromOffset(0, o.th or 5), Rotation = o.rot or rng:NextNumber(-50, 50),
+        BackgroundColor3 = WHITE, BorderSizePixel = 0, ZIndex = 6,
+    }, o.parent or fx)
+    new("UIGradient", {
+        Color = ColorSequence.new({
+            ColorSequenceKeypoint.new(0, o.c1 or RED),
+            ColorSequenceKeypoint.new(0.5, o.c2 or WHITE),
+            ColorSequenceKeypoint.new(1, o.c1 or RED),
+        }),
+    }, f)
+    local life = o.life or rng:NextNumber(0.25, 0.45)
+    table.insert(slashes, {
+        f = f, born = t, life = life, len = len, th = o.th or 5,
+        drawT = o.drawT or (life / 3), hold = o.hold or 0, radial = o.radial,
+    })
+end
+
+local function spawnRadial(t, ang)
+    local life = rng:NextNumber(0.35, 0.6)
+    local black = rng:NextNumber() < 0.25
+    spawnSlash(t, {
+        parent = fx, lenMul = rng:NextNumber(0.25, 0.55), th = rng:NextNumber(4, 7),
+        rot = ang, c1 = black and BLACK or RED, c2 = black and RED or WHITE,
+        life = life, drawT = life / 3, hold = 0,
+        radial = {cx = HOUSE_X, cy = HOUSE_Y, ang = math.rad(ang), r0 = rng:NextNumber(70, 130)},
+    })
+end
+
+------------------------------------------------------------
+-- SÓNG XUNG KÍCH
+------------------------------------------------------------
+local rings = {}
+local ringColors = {PURPLE, WHITE, RED}
+for i = 1, 3 do
+    local f = new("Frame", {
+        AnchorPoint = V2(0.5, 0.5), Position = UDim2.fromScale(GOJO_X, GOJO_Y), Size = UDim2.fromOffset(0, 0),
+        BackgroundTransparency = 1, BorderSizePixel = 0, ZIndex = 7, Visible = false,
+    }, fx)
+    new("UICorner", {CornerRadius = UDim.new(1, 0)}, f)
+    local st = new("UIStroke", {Thickness = 8, Color = ringColors[i]}, f)
+    rings[i] = {f = f, st = st, delay = (i - 1) * 0.15}
+end
+
+------------------------------------------------------------
+-- TÊN 2 BÊN
+------------------------------------------------------------
+local function makeName(text, color, x, y)
+    return new("TextLabel", {
+        AnchorPoint = V2(0.5, 0.5), Position = UDim2.fromScale(x, y),
+        Size = UDim2.fromOffset(300, 40), BackgroundTransparency = 1,
+        Text = text, Font = Enum.Font.GothamBold, TextSize = 28, TextColor3 = color,
+        TextTransparency = 1, ZIndex = 10,
+    }, fx)
+end
+local gojoName   = makeName("GOJO", BLUE, GOJO_X, 0.80)
+local sukunaName = makeName("SUKUNA", RED, HOUSE_X, 0.82)
+
+------------------------------------------------------------
+-- LỚP LỘ RA (REVEAL)
+------------------------------------------------------------
+local reveal = new("Frame", {
+    Size = UDim2.fromScale(1, 1), BackgroundColor3 = Color3.fromRGB(8, 0, 10),
+    BorderSizePixel = 0, ZIndex = 9, Visible = false, ClipsDescendants = true,
+}, root)
+
+local domainImg, domainScale
+if DOMAIN_IMAGE_ID ~= 0 then
+    domainImg = new("ImageLabel", {
+        AnchorPoint = V2(0.5, 0.5), Position = UDim2.fromScale(0.5, 0.5), Size = UDim2.fromScale(1, 1),
+        BackgroundTransparency = 1, Image = "rbxassetid://" .. tostring(DOMAIN_IMAGE_ID),
+        ScaleType = Enum.ScaleType.Crop, ZIndex = 1,
+    }, reveal)
+    domainScale = new("UIScale", {Scale = 1.2}, domainImg)
+    setupImage(domainImg, DOMAIN_IMAGE_ID, "LANH DIA")
+end
+
+local title, titleScale
+if TITLE_IMAGE_ID ~= 0 then
+    title = new("ImageLabel", {
+        AnchorPoint = V2(0.5, 0.5), Position = UDim2.fromScale(0.5, 0.5), Size = UDim2.new(0.7, 0, 0, 180),
+        BackgroundTransparency = 1, Image = "rbxassetid://" .. tostring(TITLE_IMAGE_ID),
+        ScaleType = Enum.ScaleType.Fit, ImageTransparency = 1, Rotation = TEAR_ANGLE, ZIndex = 3,
+    }, reveal)
+    setupImage(title, TITLE_IMAGE_ID, "TIEU DE")
+else
+    title = new("TextLabel", {
+        AnchorPoint = V2(0.5, 0.5), Position = UDim2.fromScale(0.5, 0.5), Size = UDim2.new(0.95, 0, 0, 110),
+        BackgroundTransparency = 1, Text = "GOJO  VS  SUKUNA", Font = Enum.Font.GothamBlack,
+        TextSize = 74, TextColor3 = WHITE, TextStrokeColor3 = RED, TextStrokeTransparency = 0.2,
+        TextTransparency = 1, Rotation = TEAR_ANGLE, ZIndex = 3,
+    }, reveal)
+end
+titleScale = new("UIScale", {Scale = 1.25}, title)
+
+------------------------------------------------------------
+-- 2 MẢNH TRẮNG
+------------------------------------------------------------
+local L = 6000
+local trad = math.rad(TEAR_ANGLE)
+local nx, ny = -math.sin(trad), math.cos(trad)
+
+local function makeHalf(isA)
+    local h = new("Frame", {
+        AnchorPoint = V2(0.5, 0.5), Position = UDim2.fromScale(0.5, 0.5), Size = UDim2.fromOffset(L, L),
+        BackgroundColor3 = WHITE, BackgroundTransparency = 1, BorderSizePixel = 0,
+        Rotation = TEAR_ANGLE, ZIndex = 10, Visible = false,
+    }, root)
+    local edge = new("Frame", {
+        AnchorPoint = V2(0.5, isA and 0 or 1), Position = UDim2.fromScale(0.5, isA and 0 or 1),
+        Size = UDim2.new(1, 0, 0, 7), BackgroundColor3 = isA and BLACK or RED,
+        BackgroundTransparency = 1, BorderSizePixel = 0,
+    }, h)
+    return h, edge
+end
+local halfA, edgeA = makeHalf(true)
+local halfB, edgeB = makeHalf(false)
+
+local slashLayer = new("Frame", {
+    Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, ZIndex = 11,
+}, root)
+
+------------------------------------------------------------
+-- FLASH + THANH ĐIỆN ẢNH
+------------------------------------------------------------
+local flash = new("Frame", {
+    Size = UDim2.fromScale(1, 1), BackgroundColor3 = WHITE, BackgroundTransparency = 1,
+    BorderSizePixel = 0, ZIndex = 30,
+}, root)
+
+local barTop = new("Frame", {
+    Size = UDim2.fromScale(1, 0.1), Position = UDim2.fromScale(0, -0.1),
+    BackgroundColor3 = BLACK, BorderSizePixel = 0, ZIndex = 20,
+}, root)
+local barBot = new("Frame", {
+    Size = UDim2.fromScale(1, 0.1), Position = UDim2.fromScale(0, 1),
+    BackgroundColor3 = BLACK, BorderSizePixel = 0, ZIndex = 20,
+}, root)
+
+------------------------------------------------------------
+-- LOADING UI
+------------------------------------------------------------
+local function makeSide(isLeft)
+    local side = new("Frame", {
+        BackgroundTransparency = 1, Size = UDim2.new(0, 120, 0.7, 0),
+        AnchorPoint = V2(isLeft and 0 or 1, 0.5),
+        Position = UDim2.new(isLeft and 0 or 1, isLeft and 40 or -40, 0.5, 0), ZIndex = 12,
+    }, root)
+
+    local ring = new("Frame", {
+        Size = UDim2.fromOffset(90, 90), AnchorPoint = V2(0.5, 0),
+        Position = UDim2.new(0.5, 0, 0, 0), BackgroundTransparency = 1, ZIndex = 12,
+    }, side)
+
+    local track = new("Frame", {Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, ZIndex = 12}, ring)
+    new("UICorner", {CornerRadius = UDim.new(1, 0)}, track)
+    new("UIStroke", {Thickness = 4, Color = Color3.fromRGB(40, 40, 70)}, track)
+
+    local arc = new("Frame", {Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, ZIndex = 13}, ring)
+    new("UICorner", {CornerRadius = UDim.new(1, 0)}, arc)
+    local arcStroke = new("UIStroke", {Thickness = 5, Color = WHITE}, arc)
+    local arcGrad = new("UIGradient", {
+        Color = ColorSequence.new(isLeft and BLUE or RED, WHITE),
+        Transparency = NumberSequence.new({
+            NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(0.45, 0),
+            NumberSequenceKeypoint.new(0.5, 1), NumberSequenceKeypoint.new(1, 1),
+        }),
+    }, arcStroke)
+
+    local pct = new("TextLabel", {
+        Size = UDim2.fromScale(1, 1), BackgroundTransparency = 1, Text = "0%",
+        Font = Enum.Font.GothamBold, TextSize = 20, TextColor3 = WHITE,
+        TextStrokeTransparency = 0.5, ZIndex = 14,
+    }, ring)
+
+    local barBg = new("Frame", {
+        AnchorPoint = V2(0.5, 0), Position = UDim2.new(0.5, 0, 0, 110), Size = UDim2.new(0, 10, 1, -110),
+        BackgroundColor3 = Color3.fromRGB(25, 25, 45), BorderSizePixel = 0, ZIndex = 12,
+    }, side)
+    new("UICorner", {CornerRadius = UDim.new(1, 0)}, barBg)
+
+    local fill = new("Frame", {
+        AnchorPoint = V2(0, 1), Position = UDim2.fromScale(0, 1), Size = UDim2.fromScale(1, 0),
+        BackgroundColor3 = isLeft and BLUE or RED, BorderSizePixel = 0, ZIndex = 13,
+    }, barBg)
+    new("UICorner", {CornerRadius = UDim.new(1, 0)}, fill)
+    new("UIGradient", {
+        Color = ColorSequence.new(isLeft and BLUE or RED, WHITE), Rotation = 90,
+    }, fill)
+
+    return {arcGrad = arcGrad, pct = pct, fill = fill, dir = isLeft and 1 or -1}
+end
+local sides = {makeSide(true), makeSide(false)}
+
+------------------------------------------------------------
+-- LỊCH NHÁT CHÉM
+------------------------------------------------------------
+local tearSeq = {
+    {rot = -38, c1 = RED,   c2 = BLACK},
+    {rot = 31,  c1 = BLACK, c2 = RED},
+    {rot = -64, c1 = RED,   c2 = BLACK},
+    {rot = 52,  c1 = BLACK, c2 = RED},
+    {rot = -12, c1 = RED,   c2 = BLACK},
+    {rot = TEAR_ANGLE, c1 = BLACK, c2 = RED, main = true},
+}
+local tearDone = {}
+
+------------------------------------------------------------
+-- VÒNG LẶP CHÍNH
+------------------------------------------------------------
+local D = DURATION
+local startTime = os.clock()
+local conn
+local finished = false
+local lastSlash, lastDomain, domainCount = 0, 0, 0
+local burst = 0
+local theta = 0
+
+conn = RunService.RenderStepped:Connect(function(dt)
+    local t = os.clock() - startTime
+    local u = clamp01(t / D)
+
+    local T_ORBIT0, T_MERGE, T_EXPLODE = 0.10, 0.60, 0.74
+    local T_TEARSLASH, T_TEAR, T_OPEN2, T_OFF, T_END = 0.775, 0.815, 0.86, 0.90, 0.97
+
+    root.GroupTransparency = math.max(1 - sm(0, 0.05, u), sm(T_END, 1, u))
+    backdrop.BackgroundTransparency = sm(0.98, 1, u)
+    sound.Volume = MUSIC_VOL * (1 - sm(T_END, 1, u))
+
+    local bar = sm(0, 0.08, u)
+    barTop.Position = UDim2.fromScale(0, -0.1 + 0.1 * bar)
+    barBot.Position = UDim2.fromScale(0, 1 - 0.1 * bar)
+
+    burst = math.max(burst - dt * 40, 0)
+    local amp = 0
+    if u >= 0.40 and u < T_MERGE then amp = 4 * sm(0.40, T_MERGE, u)
+    elseif u >= T_MERGE and u < T_EXPLODE then amp = 4 + 26 * sm(T_MERGE, T_EXPLODE, u)
+    elseif u >= T_EXPLODE and u < 0.77 then amp = 30 * (1 - sm(T_EXPLODE, 0.77, u)) end
+    amp += burst
+    if amp > 0 then
+        root.Position = UDim2.fromOffset((rng:NextNumber() - 0.5) * 2 * amp, (rng:NextNumber() - 0.5) * 2 * amp)
+    else
+        root.Position = UDim2.fromOffset(0, 0)
+    end
+
+    -- GOJO Orbs
+    local gone = 1 - sm(T_MERGE, T_MERGE + 0.03, u)
+    local spin = sm(T_ORBIT0, T_MERGE, u)
+    theta += dt * (1.5 + 8 * spin)
+    local orbitR = 200 * (1 - 0.92 * spin)
+    local ox, oy = math.cos(theta) * orbitR, math.sin(theta) * orbitR * 0.7
+    local osize = (40 + 90 * sm(0.08, 0.40, u) + 30 * sm(0.40, T_MERGE, u)) * gone * (1 + 0.06 * math.sin(t * 8))
+    local oint = sm(0.05, 0.30, u) * gone
+    blueOrb.update(GOJO_X, GOJO_Y, osize, oint, ox, oy)
+    redOrb.update(GOJO_X, GOJO_Y, osize, oint, -ox, -oy)
+
+    -- Purple Orb Merge
+    local px = clamp01((u - T_MERGE) / (T_EXPLODE - T_MERGE))
+    local pSize = (40 + 1300 * px * px) * (1 + 0.06 * math.sin(t * (10 + 20 * px)))
+    local pInten = sm(T_MERGE, T_MERGE + 0.05, u) * (1 - sm(T_EXPLODE - 0.002, T_EXPLODE + 0.002, u))
+    purpleOrb.update(GOJO_X + (0.5 - GOJO_X) * ease(px), GOJO_Y, pSize, pInten)
+
+    -- Rings
+    local tClash = T_MERGE * D
+    for _, r in ipairs(rings) do
+        local age = t - tClash - r.delay
+        if age > 0 and age < 1.4 then
+            local k = age / 1.4
+            r.f.Visible = true
+            local s = 2000 * ease(k)
+            r.f.Size = UDim2.fromOffset(s, s)
+            r.st.Thickness = 10 * (1 - k) + 1
+            r.st.Transparency = k ^ 1.5
+        else
+            r.f.Visible = false
+        end
+    end
+
+    -- Sukuna House
+    local grow = sm(0.10, 0.22, u)
+    local houseBase = math.clamp(gui.AbsoluteSize.Y / 900, 0.45, 1)
+    houseScale.Scale = math.max(houseBase * grow, 0.01)
+    local jit = 1 + 5 * sm(0.4, T_EXPLODE, u)
+    house.Position = UDim2.new(
+        HOUSE_X, (rng:NextNumber() - 0.5) * jit,
+        HOUSE_Y, (1 - grow) * 40 + (rng:NextNumber() - 0.5) * jit
+    )
+    local aSize = (140 + 160 * sm(0.2, T_EXPLODE, u)) * houseBase * grow * (1 + 0.07 * math.sin(t * 9))
+    houseAura.update(HOUSE_X, HOUSE_Y, aSize, (0.4 + 0.6 * sm(0.2, T_EXPLODE, u)) * grow)
+
+    local rate = 0
+    if u >= 0.20 and u < 0.40 then rate = 3
+    elseif u >= 0.40 and u < T_MERGE then rate = 7
+    elseif u >= T_MERGE and u < T_EXPLODE then rate = 12 end
+    if rate > 0 and t - lastSlash > 1 / rate then
+        lastSlash = t
+        spawnRadial(t, rng:NextNumber(0, 360))
+    end
+
+    local nameT = 1 - sm(0.12, 0.20, u) * gone
+    gojoName.TextTransparency = nameT
+    sukunaName.TextTransparency = nameT
+
+    local imgIn = sm(0.10, 0.30, u) * gone
+    if gojoImg then
+        gojoImg.Position = UDim2.fromScale(-0.4 + 0.4 * sm(0.10, 0.30, u), 0.5)
+        gojoImg.ImageTransparency = 1 - 0.9 * imgIn
+    end
+    if sukunaImg then
+        sukunaImg.Position = UDim2.fromScale(1.4 - 0.4 * sm(0.10, 0.30, u), 0.5)
+        sukunaImg.ImageTransparency = 1 - 0.9 * imgIn
+    end
+
+    -- Flash
+    local fl
+    if u < T_EXPLODE - 0.002 then fl = 1
+    elseif u < T_EXPLODE + 0.002 then fl = 1 - (u - (T_EXPLODE - 0.002)) / 0.004
+    elseif u < T_EXPLODE + 0.03 then fl = (u - (T_EXPLODE + 0.002)) / 0.028
+    else fl = 1 end
+    flash.BackgroundTransparency = math.clamp(fl, 0, 1)
+
+    local whiteOn = u >= T_EXPLODE and u < T_OFF + 0.005
+    halfA.Visible = whiteOn
+    halfB.Visible = whiteOn
+    reveal.Visible = u >= T_EXPLODE and u < T_END + 0.03
+    local wTrans = 1 - sm(T_EXPLODE, T_EXPLODE + 0.006, u)
+    halfA.BackgroundTransparency = wTrans
+    halfB.BackgroundTransparency = wTrans
+
+    -- Tear Slashes
+    for i, s in ipairs(tearSeq) do
+        if not tearDone[i] and u >= T_TEARSLASH + (i - 1) * 0.0075 then
+            tearDone[i] = true
+            spawnSlash(t, {
+                parent = slashLayer,
+                x1 = s.main and 0.5 or 0.35, x2 = s.main and 0.5 or 0.65,
+                y1 = s.main and 0.5 or 0.35, y2 = s.main and 0.5 or 0.65,
+                rot = s.rot, lenMul = 2.2, th = s.main and 6 or 4,
+                c1 = s.c1, c2 = s.c2,
+                life = math.max(T_OPEN2 * D - t, 0.8), drawT = 0.12, hold = 0.75,
+            })
+            burst = 14
+        end
+    end
+
+    local g = 260 * sm(T_TEAR, T_TEAR + 0.025, u) + 2740 * sm(T_OPEN2, T_OFF, u)
+    local wedge = 3 * sm(T_TEAR, T_TEAR + 0.025, u)
+    local off = L / 2 + g / 2
+    halfA.Position = UDim2.new(0.5, nx * off, 0.5, ny * off)
+    halfB.Position = UDim2.new(0.5, -nx * off, 0.5, -ny * off)
+    halfA.Rotation = TEAR_ANGLE + wedge
+    halfB.Rotation = TEAR_ANGLE - wedge
+    local edgeT = 1 - sm(T_TEAR, T_TEAR + 0.004, u)
+    edgeA.BackgroundTransparency = edgeT
+    edgeB.BackgroundTransparency = edgeT
+
+    local ts = sm(T_TEAR + 0.005, T_TEAR + 0.025, u)
+    if title:IsA("TextLabel") then
+        title.TextTransparency = 1 - ts
+        title.TextStrokeTransparency = 1 - 0.8 * ts
+    else
+        title.ImageTransparency = 1 - ts
+    end
+    titleScale.Scale = 1.25 - 0.25 * sm(T_TEAR, T_OFF, u)
+    if domainScale then
+        domainScale.Scale = 1.2 - 0.2 * sm(T_TEAR, T_END, u)
+    end
+
+    if u >= 0.83 and u < T_END - 0.005 and t - lastDomain > 1 / 9 then
+        lastDomain = t
+        domainCount += 1
+        local black = domainCount % 3 == 0
+        local life = rng:NextNumber(0.3, 0.5)
+        spawnSlash(t, {
+            parent = slashLayer, x1 = 0.03, x2 = 0.6, y1 = 0.1, y2 = 0.9,
+            rot = rng:NextNumber(-60, 60), lenMul = rng:NextNumber(0.3, 0.6), th = 7,
+            c1 = black and BLACK or RED, c2 = black and RED or WHITE,
+            life = life, drawT = life / 3, hold = 0,
+        })
+        burst = math.max(burst, 8)
+    end
+
+    for i = #slashes, 1, -1 do
+        local s = slashes[i]
+        local age = (t - s.born) / s.life
+        if age >= 1 then
+            s.f:Destroy()
+            table.remove(slashes, i)
+        else
+            local draw = ease(clamp01((t - s.born) / s.drawT))
+            local fadeK = 0
+            if age > s.hold then fadeK = (age - s.hold) / (1 - s.hold) end
+            local curLen = s.len * draw
+            s.f.Size = UDim2.fromOffset(curLen, s.th * (1 - fadeK) + 1)
+            s.f.BackgroundTransparency = fadeK ^ 2
+            if s.radial then
+                local r = s.radial
+                local d = r.r0 + curLen / 2
+                s.f.Position = UDim2.new(r.cx, math.cos(r.ang) * d, r.cy, math.sin(r.ang) * d)
+            end
+        end
+    end
+
+    for _, s in ipairs(sides) do
+        s.arcGrad.Rotation = (t * 360) % 360 * s.dir
+        s.pct.Text = string.format("%d%%", math.floor(u * 100))
+        s.fill.Size = UDim2.fromScale(1, u)
+    end
+
+    if u >= 1 and not finished then
+        finished = true
+        conn:Disconnect()
+        sound:Stop()
+        gui:Destroy()
+        task.spawn(RunMainScript)
+    end
+end)
+
+print("[Intro] khoi tao xong")
+end)
+
+if not __ok then
+    warn("[Intro] LOI: " .. tostring(__err))
+    task.spawn(RunMainScript)
+end

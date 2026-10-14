@@ -15,7 +15,7 @@
 ------------------------------------------------------------
 -- CẤU HÌNH
 ------------------------------------------------------------
-local MUSIC_ID   = 136796809523895   -- << THAY ID NHẠC CỦA BẠN
+local MUSIC_ID   = 140250810677459   -- << THAY ID NHẠC CỦA BẠN
 local MUSIC_VOL  = 1
 local LOAD_TIME  = 62           -- tổng thời gian intro (giây)
 local MAIN_COLOR = Color3.fromRGB(0, 140, 255)

